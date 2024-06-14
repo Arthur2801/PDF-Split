@@ -1,6 +1,2 @@
 streamlit
-os
-re
 PyPDF2
-zipfile
-io
