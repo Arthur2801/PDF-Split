@@ -1,0 +1,9 @@
+streamlit
+os
+re
+PyPDF2
+PdfReader
+PdfWriter
+zipfile
+io
+BytesIO
