@@ -6,11 +6,11 @@ import zipfile
 from io import BytesIO
 
 
-# Télécharger le fichier PDF via Streamlit
+# Télécharger le fichier PDF
 pdf_file = st.file_uploader('Import PDF', type="pdf")
 
 if pdf_file is not None:
-    # Lire le contenu du fichier téléchargé
+    # Lire le fichier téléchargé
     pdf_file_path = pdf_file.name
     pdf_reader = PdfReader(BytesIO(pdf_file.read()))
 
@@ -51,15 +51,15 @@ if pdf_file is not None:
                 else:
                     break
 
-            # Créer le fichier PDF en mémoire
+            # Créer le fichier PDF
             output_filename = f"{matched_text.replace(' ', '_')}.pdf"
             pdf_bytes = BytesIO()
             pdf_writer.write(pdf_bytes)
             pdf_bytes.seek(0)
 
-            # Ajouter le fichier PDF au fichier ZIP
+            # Ajouter le PDF au ZIP
             zipf.writestr(output_filename, pdf_bytes.read())
 
-    # Offrir le fichier ZIP pour téléchargement via Streamlit
+    #Téléchargement via Streamlit
     zip_buffer.seek(0)
     st.download_button('Télécharger le fichier ZIP', zip_buffer, file_name='Etat_des_couts_analytiques.zip')
